@@ -6,8 +6,7 @@
 // You may assume the user enters numbers. Repeated prompting and handling nonnumeric input are not required.
 
 #include<iostream>
-#include<cmath>
-#include<iomanip>
+#include<iomanip> //Allows  setprecision()
 using namespace std;
 
 int main(){
@@ -22,15 +21,18 @@ int main(){
     cout << "What is the height in inches: ";
     cin >> height;
 
-    if (weight==0 or height==0)
+    //Checks if the numbers are lower than or equal to 0
+    if (weight<=0 || height<=0)
     {
-        cout << "ERROR";
+        cout << "ERROR: Must be over 0";
     }
+    //If both values are greater than 0
     else
     {
+        //BMI is calculated using the formula
         bmi = weight * 703.0 / (height * height);
-        cout << bmi;
-
+        
+        //As long as the bmi passes the first 2 tests, then the bmi is definitely in the optimal weight zone
         if (bmi < 18.5)
         {
             cout << "Underweight";
@@ -43,6 +45,11 @@ int main(){
         {
             cout << "Optimal Weight";
         }
+        
+        //Rounds BMI
+        cout << fixed;
+        cout << setprecision(2);
+        cout << "\nRounded BMI: " << bmi;
     }
 
 }
